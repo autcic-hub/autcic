@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/Breej/Downloads/index.html -->
+<html lang="th"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TCIC Study Advisor · น้องมิน</title>
+<script src="./TCIC Study Advisor · น้องมิน_files/sdk.js.download"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Thai', sans-serif;
+    background: #f5f5f0;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 12px 12px 80px; }
+
+  /* Header */
+  .header {
+    background: #fff;
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .hname { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+  .hsub { font-size: 10px; color: #888; }
+  .status { display: flex; align-items: center; gap: 4px; font-size: 10px; color: #1D9E75; margin-left: auto; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* Chat */
+  .chat-box { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .msgs { min-height: 300px; max-height: 55vh; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .msg { display: flex; gap: 8px; align-items: flex-end; }
+  .msg.user { flex-direction: row-reverse; }
+  .bubble { max-width: 78%; padding: 10px 13px; border-radius: 16px; font-size: 13px; line-height: 1.65; }
+  .bubble.bot { background: #f0f0ec; color: #1a1a1a; border-bottom-left-radius: 4px; }
+  .bubble.user { background: #1D9E75; color: #fff; border-bottom-right-radius: 4px; }
+  .th { display: block; font-size: 12px; }
+  .en { display: block; font-size: 11px; opacity: 0.72; margin-top: 2px; }
+  .bubble.user .en { opacity: 0.8; }
+  .avt-sm { width: 28px; height: 28px; border-radius: 50%; background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .avt-sm.u { background: #E6F1FB; }
+
+  /* Options */
+  .opts { padding: 10px 12px; border-top: 1px solid #f0f0ec; display: flex; flex-direction: column; gap: 6px; }
+  .opt-btn {
+    padding: 10px 13px; border: 1px solid #e0e0d8; border-radius: 12px;
+    background: #fff; color: #1a1a1a; font-size: 12px; cursor: pointer;
+    text-align: left; font-family: inherit; line-height: 1.45; transition: background 0.15s;
+  }
+  .opt-btn:hover, .opt-btn:active { background: #f5f5f0; }
+  .opt-th { display: block; font-weight: 500; }
+  .opt-en { display: block; font-size: 10px; color: #888; margin-top: 1px; }
+
+  /* Typing */
+  .typing { display: flex; gap: 4px; align-items: center; padding: 4px 2px; }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: #bbb; animation: bop 1s infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.15s; }
+  .typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes bop { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-5px)} }
+
+  /* Result cards */
+  .result-card {
+    background: #fff; border: 1px solid #eee; border-radius: 12px;
+    padding: 10px 12px; margin-bottom: 7px; display: flex; gap: 10px;
+  }
+  .rank-circle {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; flex-shrink: 0;
+  }
+  .r-name { font-size: 12px; font-weight: 600; color: #1a1a1a; line-height: 1.3; }
+  .r-en { font-size: 10px; color: #888; margin-bottom: 5px; }
+  .r-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .r-tag { font-size: 9px; padding: 2px 7px; border-radius: 8px; }
+
+  /* Restart */
+  .restart-btn {
+    width: 100%; padding: 10px; border: none; border-top: 1px solid #f0f0ec;
+    background: transparent; font-size: 11px; color: #aaa; cursor: pointer;
+    font-family: inherit;
+  }
+  .restart-btn:hover { background: #f9f9f7; }
+
+  /* Send to LINE button */
+  .line-btn {
+    width: 100%; padding: 13px; background: #06C755; color: #fff;
+    border: none; border-radius: 12px; font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: inherit; margin-top: 8px; letter-spacing: 0.3px;
+  }
+  .line-btn:hover { background: #05b34c; }
+
+  /* Note box */
+  .note { background: #E1F5EE; border-radius: 12px; padding: 10px 13px; font-size: 11px; color: #0F6E56; line-height: 1.6; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="avatar">🎓</div>
+    <div>
+      <div class="hname">น้องมิน · TCIC Advisor</div>
+      <div class="hsub">Thailand-Chinese International College · ABAC</div>
+    </div>
+    <div class="status"><span class="dot"></span>Online</div>
+  </div>
+
+  <div class="chat-box">
+    <div class="msgs" id="msgs"><div class="msg">
+      <div class="avt-sm">🎓</div>
+      <div class="bubble bot">
+        <span class="th">สวัสดีค่ะ! หนูชื่อมินนะคะ 😊<br>ที่ปรึกษาโปรแกรมเรียนจีนของ TCIC · Assumption University<br><br>มาหาโปรแกรมที่ใช่สำหรับน้องกันเลยค่ะ — น้องสนใจระดับไหนคะ?</span>
+        <span class="en">Hi! I'm Min, your TCIC Study Advisor 😊<br>Let's find your perfect program in China!<br><br>What level of study are you interested in?</span>
+      </div>
+    </div></div>
+    <div class="opts" id="opts"><button class="opt-btn" onclick="choose(0)">
+      <span class="opt-th">🎓 ปริญญาตรี (ม.6 / กำลังศึกษาอยู่)</span>
+      <span class="opt-en">Undergraduate</span>
+    </button><button class="opt-btn" onclick="choose(1)">
+      <span class="opt-th">📚 ปริญญาโท / เอก</span>
+      <span class="opt-en">Master's / PhD</span>
+    </button><button class="opt-btn" onclick="choose(2)">
+      <span class="opt-th">🈵 อยากเรียนภาษาจีนก่อน</span>
+      <span class="opt-en">Chinese Language Course (Short-term)</span>
+    </button><button class="opt-btn" onclick="choose(3)">
+      <span class="opt-th">🔄 Exchange / ไปแลกเปลี่ยน</span>
+      <span class="opt-en">Exchange Program</span>
+    </button></div>
+    <button class="restart-btn" onclick="restart()">🔄 เริ่มใหม่ / Restart</button>
+  </div>
+</div>
+
+<script>
+const UNIS = [
+  {id:"SWUFE",name:"SWUFE — เฉิงตู",en:"Southwestern Univ. of Finance & Economics",dual:true,exchange:true,lang:true,level:"undergrad",fields:["เศรษฐศาสตร์","การเงิน","บริหาร","ธุรกิจ","E-Commerce","AI","Business English","การค้าระหว่างประเทศ"],hsk:null,langReq:"IELTS 5.5",qs:"Global No.17 Economics",cost:"20,000 RMB/ปี",rc:"#E1F5EE",tc:"#085041"},
+  {id:"Xihua",name:"Xihua — เฉิงตู",en:"Xihua University",dual:true,exchange:true,lang:false,level:"undergrad",fields:["คอมพิวเตอร์","EV","New Energy","วิศวกรรม","เทคโนโลยี"],hsk:4,langReq:"HSK4",qs:"ShanghaiRanking No.270",cost:"24,000–26,000 RMB/ปี",rc:"#E6F1FB",tc:"#0C447C"},
+  {id:"CMC",name:"CMC — เฉิงตู",en:"Chengdu Medical College",dual:false,exchange:true,lang:false,level:"undergrad",fields:["พยาบาล","การแพทย์","สุขภาพ"],hsk:4,langReq:"HSK4",qs:"China Medical No.46",cost:"20,000 RMB/ปี",rc:"#FAECE7",tc:"#712B13"},
+  {id:"TsinghuaSIGS",name:"Tsinghua SIGS — เซินเจิ้น",en:"Tsinghua Univ. Shenzhen Int'l Grad School",dual:false,exchange:false,lang:false,level:"grad",fields:["Data Science","AI","สิ่งแวดล้อม","วิศวกรรม","นวัตกรรม"],hsk:null,langReq:"IELTS 6.5",qs:"QS World No.17",cost:"33,000–40,000 RMB/ปี",rc:"#EEEDFE",tc:"#3C3489"},
+  {id:"PKU",name:"PKU — ปักกิ่ง",en:"Peking University",dual:false,exchange:false,lang:true,level:"undergrad",fields:["กฎหมาย","ประวัติศาสตร์","ปรัชญา","สื่อสาร","เศรษฐศาสตร์","ความสัมพันธ์ระหว่างประเทศ","STEM"],hsk:6,langReq:"HSK6 / IELTS 6.5",qs:"QS World No.14",cost:"26,000–30,000 RMB/ปี",rc:"#EEEDFE",tc:"#3C3489"},
+  {id:"SCU",name:"SCU — เฉิงตู",en:"Sichuan University",dual:false,exchange:false,lang:true,level:"undergrad",fields:["ทันตแพทย์","วิศวกรรม","บริหาร","การท่องเที่ยว","มนุษยศาสตร์"],hsk:5,langReq:"HSK5 / IELTS 6.0",qs:"QS No.324 · Dentistry No.12",cost:"17,000–45,000 RMB/ปี",rc:"#FAEEDA",tc:"#633806"},
+  {id:"CAFA",name:"CAFA — ปักกิ่ง",en:"Central Academy of Fine Arts",dual:false,exchange:true,lang:false,level:"undergrad",fields:["ศิลปะ","ออกแบบ","สถาปัตยกรรม","จิตรกรรม","ประติมากรรม"],hsk:5,langReq:"HSK5 + CSCA",qs:"QS Art & Design No.21",cost:"52,000 RMB/ปี",rc:"#FBEAF0",tc:"#72243E"},
+  {id:"TUST",name:"TUST — เทียนจิน",en:"Tianjin Univ. of Science & Technology",dual:true,exchange:true,lang:false,level:"undergrad",fields:["วิศวกรรม","AI","ปัญญาประดิษฐ์","Food Science","Bioengineering","บริหาร"],hsk:5,langReq:"HSK5",qs:"Food Sci. No.30",cost:"16,000 RMB/ปี",rc:"#EAF3DE",tc:"#27500A"}
+];
+
+const FLOW = [
+  { id:"welcome",
+    bot:{th:"สวัสดีค่ะ! หนูชื่อมินนะคะ 😊\nที่ปรึกษาโปรแกรมเรียนจีนของ TCIC · Assumption University\n\nมาหาโปรแกรมที่ใช่สำหรับน้องกันเลยค่ะ — น้องสนใจระดับไหนคะ?",
+       en:"Hi! I'm Min, your TCIC Study Advisor 😊\nLet's find your perfect program in China!\n\nWhat level of study are you interested in?"},
+    opts:[
+      {th:"🎓 ปริญญาตรี (ม.6 / กำลังศึกษาอยู่)",en:"Undergraduate",val:"undergrad"},
+      {th:"📚 ปริญญาโท / เอก",en:"Master's / PhD",val:"grad"},
+      {th:"🈵 อยากเรียนภาษาจีนก่อน",en:"Chinese Language Course (Short-term)",val:"lang"},
+      {th:"🔄 Exchange / ไปแลกเปลี่ยน",en:"Exchange Program",val:"exchange"}
+    ], next:"field" },
+  { id:"field",
+    bot:{th:"เยี่ยมเลยค่ะ! น้องสนใจเรียนสาขาอะไรคะ?",en:"Great! What field of study are you most interested in?"},
+    opts:[
+      {th:"💼 บริหาร / การเงิน / เศรษฐศาสตร์",en:"Business / Finance / Economics",val:"business"},
+      {th:"💻 คอมพิวเตอร์ / AI / เทคโนโลยี",en:"Computer / AI / Technology",val:"tech"},
+      {th:"🏥 การแพทย์ / พยาบาล",en:"Medicine / Nursing",val:"medical"},
+      {th:"🎨 ศิลปะ / ออกแบบ / สถาปัตยกรรม",en:"Art / Design / Architecture",val:"art"},
+      {th:"🔬 วิศวกรรม / วิทยาศาสตร์",en:"Engineering / Science",val:"science"},
+      {th:"📖 มนุษยศาสตร์ / กฎหมาย / สื่อสาร",en:"Humanities / Law / Communication",val:"humanities"}
+    ], next:"hsk" },
+  { id:"hsk",
+    bot:{th:"ถามเรื่องภาษาจีนหน่อยนะคะ 😊\nตอนนี้น้องมีระดับภาษาจีนอยู่ที่ไหนคะ?",en:"Let's talk about your Chinese level 😊\nWhere are you currently?"},
+    opts:[
+      {th:"🔰 เพิ่งเริ่มต้น / ไม่มีพื้นฐาน",en:"Beginner / No Chinese",val:"none"},
+      {th:"📗 HSK 1–3 (พื้นฐาน)",en:"HSK 1–3 (Basic)",val:"hsk3"},
+      {th:"📘 HSK 4 (ใช้งานได้)",en:"HSK 4 (Intermediate)",val:"hsk4"},
+      {th:"📙 HSK 5 (ดี)",en:"HSK 5 (Upper-intermediate)",val:"hsk5"},
+      {th:"📕 HSK 6 (ดีมาก)",en:"HSK 6 (Advanced)",val:"hsk6"}
+    ], next:"budget" },
+  { id:"budget",
+    bot:{th:"เกือบเสร็จแล้วค่ะ! 💪\nงบค่าเล่าเรียนต่อปีที่วางแผนไว้ประมาณเท่าไหร่คะ?",en:"Almost done! 💪\nWhat's your estimated annual tuition budget?"},
+    opts:[
+      {th:"💚 ต่ำกว่า 20,000 RMB/ปี (~100,000 บาท)",en:"Under 20,000 RMB/yr",val:"low"},
+      {th:"💛 20,000–30,000 RMB/ปี (~150,000 บาท)",en:"20,000–30,000 RMB/yr",val:"mid"},
+      {th:"🧡 30,000–50,000 RMB/ปี (~250,000 บาท)",en:"30,000–50,000 RMB/yr",val:"high"},
+      {th:"💜 ไม่จำกัด / สนใจทุนการศึกษา",en:"No limit / Interested in scholarship",val:"any"}
+    ], next:"result" }
+];
+
+let state = { step:0, answers:{}, msgs:[] };
+
+function addMsg(role, th, en){
+  state.msgs.push({role,th,en});
+  renderMsgs();
+}
+
+function renderMsgs(){
+  const box = document.getElementById("msgs");
+  box.innerHTML = state.msgs.map(m=>{
+    const isBot = m.role==="bot";
+    return `<div class="msg${isBot?"":" user"}">
+      <div class="avt-sm${isBot?"":" u"}">${isBot?"🎓":"👤"}</div>
+      <div class="bubble ${isBot?"bot":"user"}">
+        <span class="th">${m.th.replace(/\n/g,"<br>")}</span>
+        <span class="en">${m.en.replace(/\n/g,"<br>")}</span>
+      </div>
+    </div>`;
+  }).join("");
+  box.scrollTop = box.scrollHeight;
+}
+
+function showTyping(){
+  const box = document.getElementById("msgs");
+  const el = document.createElement("div");
+  const id = "t"+Date.now();
+  el.id = id; el.className = "msg";
+  el.innerHTML = `<div class="avt-sm">🎓</div><div class="bubble bot"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  box.appendChild(el);
+  box.scrollTop = box.scrollHeight;
+  return id;
+}
+function removeTyping(id){ const el=document.getElementById(id); if(el) el.remove(); }
+
+function showOpts(opts){
+  document.getElementById("opts").innerHTML = opts.map((o,i)=>
+    `<button class="opt-btn" onclick="choose(${i})">
+      <span class="opt-th">${o.th}</span>
+      <span class="opt-en">${o.en}</span>
+    </button>`
+  ).join("");
+}
+
+function choose(idx){
+  const step = FLOW[state.step];
+  const opt = step.opts[idx];
+  state.answers[step.id] = opt.val;
+  addMsg("user", opt.th, opt.en);
+  document.getElementById("opts").innerHTML="";
+  state.step++;
+  if(state.step < FLOW.length){
+    const tid = showTyping();
+    setTimeout(()=>{ removeTyping(tid); showStep(state.step); }, 800);
+  } else {
+    const tid = showTyping();
+    setTimeout(()=>{ removeTyping(tid); showResult(); }, 1200);
+  }
+}
+
+function showStep(idx){
+  const s = FLOW[idx];
+  addMsg("bot", s.bot.th, s.bot.en);
+  setTimeout(()=>showOpts(s.opts), 50);
+}
+
+function scoreUni(u){
+  let score = 0;
+  const {welcome:lv, field, hsk, budget} = state.answers;
+  const hskMap = {none:0,hsk3:3,hsk4:4,hsk5:5,hsk6:6};
+  const userHSK = hskMap[hsk]||0;
+
+  if(lv==="grad"&&u.level==="grad") score+=5;
+  if(lv==="undergrad"&&u.level==="undergrad") score+=3;
+  if(lv==="lang"&&u.lang) score+=5;
+  if(lv==="exchange"&&u.exchange) score+=4;
+
+  const fm = {
+    business:["เศรษฐศาสตร์","การเงิน","บริหาร","ธุรกิจ","E-Commerce","การค้าระหว่างประเทศ","Business English"],
+    tech:["คอมพิวเตอร์","EV","New Energy","วิศวกรรม","เทคโนโลยี","Data Science","AI","ปัญญาประดิษฐ์"],
+    medical:["พยาบาล","การแพทย์","สุขภาพ"],
+    art:["ศิลปะ","ออกแบบ","สถาปัตยกรรม","จิตรกรรม","ประติมากรรม"],
+    science:["วิศวกรรม","สิ่งแวดล้อม","Food Science","Bioengineering"],
+    humanities:["กฎหมาย","ประวัติศาสตร์","ปรัชญา","สื่อสาร","ความสัมพันธ์ระหว่างประเทศ","มนุษยศาสตร์"]
+  };
+  const kw = fm[field]||[];
+  score += u.fields.filter(f=>kw.some(k=>f.includes(k)||k.includes(f))).length * 2;
+
+  if(u.hsk===null) score+=2;
+  else if(userHSK>=u.hsk) score+=3;
+  else if(userHSK===u.hsk-1) score+=1;
+
+  return score;
+}
+
+function showResult(){
+  const top3 = [...UNIS].sort((a,b)=>scoreUni(b)-scoreUni(a)).slice(0,3);
+  addMsg("bot","🎉 วิเคราะห์เสร็จแล้วค่ะ! นี่คือ 3 มหาวิทยาลัยที่เหมาะกับน้องที่สุด:","🎉 Here are your top 3 recommended universities:");
+
+  setTimeout(()=>{
+    const box = document.getElementById("msgs");
+    const el = document.createElement("div");
+    el.className="msg";
+    el.innerHTML=`<div class="avt-sm">🎓</div><div class="bubble bot" style="max-width:90%;width:100%">
+      ${top3.map((u,i)=>`
+      <div class="result-card">
+        <div class="rank-circle" style="background:${u.rc};color:${u.tc}">${i+1}</div>
+        <div style="flex:1;min-width:0">
+          <div class="r-name">${u.name}</div>
+          <div class="r-en">${u.en}</div>
+          <div class="r-tags">
+            <span class="r-tag" style="background:${u.rc};color:${u.tc}">${u.qs}</span>
+            <span class="r-tag" style="background:#f0f0ec;color:#555">${u.cost}</span>
+            <span class="r-tag" style="background:#f0f0ec;color:#555">${u.langReq}</span>
+          </div>
+        </div>
+      </div>`).join("")}
+    </div>`;
+    box.appendChild(el);
+    box.scrollTop = box.scrollHeight;
+
+    setTimeout(()=>{
+      addMsg("bot","ต้องการข้อมูลเพิ่มหรือพร้อมสมัครแล้วกดปุ่มด้านล่างได้เลยนะคะ 📩","Ready to apply or want more info? Tap below!");
+      document.getElementById("opts").innerHTML=`
+        <button class="line-btn" onclick="applyNow()">📝 สมัครเรียน / Apply Now</button>
+        <button class="opt-btn" style="margin-top:4px" onclick="contactLine()">💬 คุยกับทีม TCIC ต่อใน LINE</button>`;
+    }, 700);
+  }, 400);
+}
+
+function applyNow(){
+  // เปลี่ยน URL เป็น Jotform ของ TCIC
+  window.open("https://form.jotform.com/YOUR_JOTFORM_ID","_blank");
+}
+
+function contactLine(){
+  // ปิด LIFF และกลับไปที่ LINE Chat
+  if(typeof liff !== "undefined" && liff.isInClient()){
+    liff.closeWindow();
+  }
+}
+
+function restart(){
+  state={step:0,answers:{},msgs:[]};
+  document.getElementById("opts").innerHTML="";
+  start();
+}
+
+// LIFF Init
+async function start(){
+  try {
+    await liff.init({ liffId: "YOUR_LIFF_ID" }); // ← ใส่ LIFF ID ที่นี่
+  } catch(e) {
+    console.log("LIFF init skipped (running outside LINE)");
+  }
+  const tid = showTyping();
+  setTimeout(()=>{ removeTyping(tid); showStep(0); }, 700);
+}
+
+start();
+</script><script src="./TCIC Study Advisor · น้องมิน_files/non-ios-extensions_2_22_0.js.download" type="text/javascript"></script>
+
+
+</body></html>
