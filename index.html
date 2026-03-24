@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/Breej/Downloads/index_4.html -->
+<!-- saved from url=(0045)file:///C:/Users/Breej/Downloads/index_1.html -->
 <html lang="th" style="color-scheme: light; --liff-base-background-color: #FFFFFF; --liff-base-text-color: #000000; --liff-base-background-rgb-color: 255, 255, 255; --liff-base-text-rgb-color: 0, 0, 0; --liff-light-button-border-color: rgba(0, 0, 0, 0.15); --liff-title-text-color: #111111; --liff-title-background-color: #FFFFFF; --liff-title-button-color: #111111; --liff-icon-color: #111111; --liff-status-bar-color: black; --liff-title-subtext-color: #B7B7B7; --liff-progress-bar-color: #06C755; --liff-progress-background-color: #FFFFFF; --liff-title-button-area-background-color: rgba(255, 255, 255, 0.12); --liff-title-button-area-border-color: rgba(0, 0, 0, 0.15);"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -137,14 +137,50 @@
 
 <script>
 const UNIS = [
-  {id:"SWUFE",name:"Southwestern University of Finance and Economics",en:"SWUFE · เฉิงตู",dual:true,exchange:true,lang:true,level:"undergrad",fields:["เศรษฐศาสตร์","การเงิน","บริหาร","ธุรกิจ","E-Commerce","AI","Business English","การค้าระหว่างประเทศ"],hsk:null,langReq:"IELTS 5.5",qs:"Global No.17 Economics",cost:"20,000 RMB/ปี",rc:"#E1F5EE",tc:"#085041",scholarship:"ทุน Belt & Road เฉิงตู · ทุนรัฐบาลจีน (CSC)",langSchedule:"🌸 Spring: สมัคร Oct 20 – Jan 20 · เรียน Mar–Jul\n🍂 Autumn: สมัคร Apr 1 – Jul 31 · เรียน Sep–Jan"},
-  {id:"Xihua",name:"Xihua — เฉิงตู",en:"Xihua University",dual:true,exchange:true,lang:false,level:"undergrad",fields:["คอมพิวเตอร์","EV","New Energy","วิศวกรรม","เทคโนโลยี"],hsk:4,langReq:"HSK4",qs:"ShanghaiRanking No.270",cost:"24,000–26,000 RMB/ปี",rc:"#E6F1FB",tc:"#0C447C",scholarship:"ทุน Sichuan Province · ทุน Chengdu Sister City · Belt & Road"},
-  {id:"CMC",name:"CMC — เฉิงตู",en:"Chengdu Medical College",dual:false,exchange:true,lang:false,level:"undergrad",fields:["พยาบาล","การแพทย์","สุขภาพ"],hsk:4,langReq:"HSK4",qs:"China Medical No.46",cost:"20,000 RMB/ปี",rc:"#FAECE7",tc:"#712B13",scholarship:"ทุน Belt & Road เฉิงตู · ทุน CMC"},
-  {id:"TsinghuaSIGS",name:"Tsinghua SIGS — เซินเจิ้น",en:"Tsinghua Univ. Shenzhen Int'l Grad School",dual:false,exchange:false,lang:false,level:"grad",fields:["Data Science","AI","สิ่งแวดล้อม","วิศวกรรม","นวัตกรรม"],hsk:null,langReq:"IELTS 6.5",qs:"QS World No.17",cost:"33,000–40,000 RMB/ปี",rc:"#EEEDFE",tc:"#3C3489",scholarship:"ทุนรัฐบาลจีน (CSC) · Tsinghua SIGS Excellence · Tuition Scholarship"},
-  {id:"PKU",name:"Peking University",en:"PKU · ปักกิ่ง",dual:false,exchange:false,lang:true,level:"undergrad",fields:["กฎหมาย","ประวัติศาสตร์","ปรัชญา","สื่อสาร","เศรษฐศาสตร์","ความสัมพันธ์ระหว่างประเทศ","STEM"],hsk:6,langReq:"HSK6 / IELTS 6.5",qs:"QS World No.14",cost:"26,000–30,000 RMB/ปี",rc:"#EEEDFE",tc:"#3C3489",scholarship:"ทุนรัฐบาลจีน · ทุนกรุงปักกิ่ง · ทุน PKU",langSchedule:"🍂 Autumn (Sep–Jan): สมัคร Jan 1 – Apr 30\n🌸 Spring (Feb–Jun): สมัคร Nov 1 – Nov 30"},
-  {id:"SCU",name:"Sichuan University",en:"SCU · เฉิงตู",dual:false,exchange:false,lang:true,level:"undergrad",fields:["ทันตแพทย์","วิศวกรรม","บริหาร","การท่องเที่ยว","มนุษยศาสตร์"],hsk:5,langReq:"HSK5 / IELTS 6.0",qs:"QS No.324 · Dentistry No.12",cost:"17,000–45,000 RMB/ปี",rc:"#FAEEDA",tc:"#633806",scholarship:"ทุน CSC Full · Sichuan Province · SCU Outstanding",langSchedule:"🌸 Spring (Mar–Jul): สมัคร Sep 15 – Nov 30\n🍂 Autumn (Sep–Jan): สมัคร Mar 15 – May 30"},
-  {id:"CAFA",name:"CAFA — ปักกิ่ง",en:"Central Academy of Fine Arts",dual:false,exchange:true,lang:false,level:"undergrad",fields:["ศิลปะ","ออกแบบ","สถาปัตยกรรม","จิตรกรรม","ประติมากรรม"],hsk:5,langReq:"HSK5 + CSCA",qs:"QS Art & Design No.21",cost:"52,000 RMB/ปี",rc:"#FBEAF0",tc:"#72243E",scholarship:"ไม่มีทุนสำหรับ Exchange"},
-  {id:"TUST",name:"TUST — เทียนจิน",en:"Tianjin Univ. of Science & Technology",dual:true,exchange:true,lang:false,level:"undergrad",fields:["วิศวกรรม","AI","ปัญญาประดิษฐ์","Food Science","Bioengineering","บริหาร"],hsk:5,langReq:"HSK5",qs:"Food Sci. No.30",cost:"16,000 RMB/ปี",rc:"#EAF3DE",tc:"#27500A",scholarship:"ทุนรัฐบาลจีน · ทุนเทียนจิน · ทุนมหาวิทยาลัย"}
+  {id:"SWUFE",name:"Southwestern University of Finance and Economics",en:"SWUFE · เฉิงตู",dual:true,exchange:true,lang:true,level:"undergrad",
+   fields:["เศรษฐศาสตร์","การเงิน","บริหาร","ธุรกิจ","E-Commerce","AI Business","Business English","การค้าระหว่างประเทศ","International Business","Business Chinese"],
+   hsk:null,langReq:"IELTS 5.5 หรือสอบผ่าน AU",qs:"Global No.17 Economics & Business",
+   cost:"Dual: 20,000 RMB/ปี · Exchange: ฟรี",rc:"#E1F5EE",tc:"#085041",
+   scholarship:"ทุน Belt & Road เฉิงตู · ทุนรัฐบาลจีน (CSC)",
+   langSchedule:"🌸 Spring: สมัคร Oct 20 – Jan 20 · เรียน Mar–Jul\n🍂 Autumn: สมัคร Apr 1 – Jul 31 · เรียน Sep–Jan"},
+  {id:"XHU",name:"Xihua University",en:"XHU · เฉิงตู",dual:true,exchange:true,lang:false,level:"undergrad",
+   fields:["คอมพิวเตอร์","Computer Science","EV","New Energy Vehicle Engineering","Applied Information Technology","วิศวกรรม","เทคโนโลยี"],
+   hsk:4,langReq:"HSK4 (704 ชั่วโมง)",qs:"ShanghaiRanking No.270",
+   cost:"Dual: 24,000–26,000 RMB/ปี · Exchange: ฟรี",rc:"#E6F1FB",tc:"#0C447C",
+   scholarship:"ทุน Sichuan Province · ทุน Chengdu Sister City · Belt & Road"},
+  {id:"CMC",name:"Chengdu Medical College",en:"CMC · เฉิงตู",dual:false,exchange:true,lang:false,level:"undergrad",
+   fields:["พยาบาล","การแพทย์","สุขภาพ","Nursing"],
+   hsk:4,langReq:"HSK4 (704 ชั่วโมง)",qs:"China Medical No.46",
+   cost:"20,000 RMB/ปี",rc:"#FAECE7",tc:"#712B13",
+   scholarship:"ทุน Belt & Road เฉิงตู · ทุน CMC Scholarship"},
+  {id:"TsinghuaSIGS",name:"Tsinghua University Shenzhen International Graduate School",en:"Tsinghua SIGS · เซินเจิ้น",dual:false,exchange:false,lang:false,level:"grad",
+   fields:["Data Science","AI","IT","สิ่งแวดล้อม","Environment & Sustainability","Marine Engineering","วิศวกรรม","นวัตกรรม","Innovation Management"],
+   hsk:null,langReq:"GPA ≥3.5 · IELTS 6.5 / TOEFL ≥80 (English) · HSK4 (Chinese)",
+   qs:"QS World No.17",cost:"โท: 33,000–40,000 RMB · เอก: ~40,000 RMB/ปี",
+   rc:"#EEEDFE",tc:"#3C3489",
+   scholarship:"ทุนรัฐบาลจีน (CSC) · Tsinghua SIGS Excellence · Tuition Scholarship"},
+  {id:"PKU",name:"Peking University",en:"PKU · ปักกิ่ง",dual:false,exchange:false,lang:true,level:"undergrad",
+   fields:["กฎหมาย","ประวัติศาสตร์","ปรัชญา","สื่อสาร","วารสารศาสตร์","เศรษฐศาสตร์","ความสัมพันธ์ระหว่างประเทศ","STEM","International Relations","Information","Environment","Life Sciences","Art History","Archaeology","Chinese Language"],
+   hsk:6,langReq:"HSK6 ≥180 (Chinese) · IELTS 6.5 (English)",qs:"QS World No.14",
+   cost:"26,000–30,000 RMB/ปี · ภาษาจีน: 18,000 RMB/sem",rc:"#EEEDFE",tc:"#3C3489",
+   scholarship:"ทุนรัฐบาลจีน · ทุนกรุงปักกิ่ง · ทุน PKU",
+   langSchedule:"🍂 Autumn (Sep–Jan): สมัคร Jan 1 – Apr 30\n🌸 Spring (Feb–Jun): สมัคร Nov 1 – Nov 30"},
+  {id:"SCU",name:"Sichuan University",en:"SCU · เฉิงตู",dual:false,exchange:false,lang:true,level:"undergrad",
+   fields:["ทันตแพทย์","Stomatology","วิศวกรรม","Software Engineering","Civil Engineering","บริหาร","Business Administration","การท่องเที่ยว","Tourism Management","มนุษยศาสตร์","Humanities","เศรษฐศาสตร์","Economics & Management","วิทยาศาสตร์","Science & Engineering","การแพทย์","Medicine","ศิลปะ","Archaeology"],
+   hsk:5,langReq:"HSK5 / IELTS 6.0 / TOEFL ≥80",qs:"QS No.324 · Dentistry No.12",
+   cost:"17,000–45,000 RMB/ปี · ภาษาจีน: 8,250 RMB/sem",rc:"#FAEEDA",tc:"#633806",
+   scholarship:"ทุน CSC Full · Sichuan Province · SCU Outstanding",
+   langSchedule:"🌸 Spring (Mar–Jul): สมัคร Sep 15 – Nov 30\n🍂 Autumn (Sep–Jan): สมัคร Mar 15 – May 30"},
+  {id:"CAFA",name:"Central Academy of Fine Arts",en:"CAFA · ปักกิ่ง",dual:false,exchange:true,lang:false,level:"undergrad",
+   fields:["ศิลปะ","Fine Arts","ออกแบบ","Design","สถาปัตยกรรม","Architecture","Art Theory","Chinese Painting","จิตรกรรม","Calligraphy","ประติมากรรม","Sculpture","Experimental Art","Humanities","Art Management","Conservation"],
+   hsk:5,langReq:"HSK5 + CSCA (สอบศิลปะ)",qs:"QS Art & Design No.21",
+   cost:"ป.ตรี: 52,000 RMB · Foundation: 90,000 RMB · Exchange: ฟรี",rc:"#FBEAF0",tc:"#72243E",
+   scholarship:"ไม่มีทุนสำหรับ Exchange"},
+  {id:"TUST",name:"Tianjin University of Science and Technology",en:"TUST · เทียนจิน",dual:true,exchange:true,lang:false,level:"undergrad",
+   fields:["วิศวกรรม","Mechanical Engineering","AI","ปัญญาประดิษฐ์","Artificial Intelligence","Electronic Information","Automation","Food Science","Bioengineering","บริหาร","Economics & Management","การค้าระหว่างประเทศ","International Economics","ศิลปะ","Art & Design"],
+   hsk:5,langReq:"HSK5",qs:"Polymer Sci No.10 · Food Sci No.30",
+   cost:"Dual: 16,000 RMB/ปี · Exchange: ฟรี",rc:"#EAF3DE",tc:"#27500A",
+   scholarship:"ทุนรัฐบาลจีน (CSC) · ทุนเทียนจิน · ทุนมหาวิทยาลัย"}
 ];
 
 const FLOW = [
